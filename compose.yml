@@ -1,1 +1,17 @@
-
+---
+services:
+  mysqldb:
+    build: database/
+    image: bloodimages:dbimage
+    ports:
+     - "3306:3306"
+    deploy:
+       replicas: 2
+       
+  appcont:
+     build: .
+     image: bloodimages:appimage
+     ports: 
+       - "1111:80"
+     deploy:
+      replicas: 2
